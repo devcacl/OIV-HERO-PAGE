@@ -1,6 +1,6 @@
 # OIV Global - Hero Page
 
-This repository contains the main page (Hero Section or Landing Page) for **OIV Global** (International Organization of Volunteers), a platform that connects passionate individuals with volunteering opportunities around the world.
+This repository contains the main page (Hero Section) for **OIV Global** (International Organization of Volunteers), a platform that connects passionate individuals with volunteering opportunities around the world.
 
 **🔗 Live Demo:** [View Live Project](https://devcacl.github.io/OIV-HERO-PAGE/)
 
