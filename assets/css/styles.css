@@ -350,6 +350,14 @@ a:hover {
   padding: 24px;
   max-width: 300px;
   width: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición con un ligero rebote profesional */
+  cursor: pointer;
+}
+
+.hero-card:hover {
+  transform: translateY(-10px) scale(1.02); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); 
+  border: 0.5px solid rgba(168, 216, 90, 0.5); 
 }
 
 .card-img {
