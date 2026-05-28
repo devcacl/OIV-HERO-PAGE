@@ -6,94 +6,197 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>OIV - Tu Voluntariado, Tu Impacto Global</title>
   <meta name="description" content="Conectamos personas apasionadas con oportunidades de voluntariado en todo el mundo.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  >
+
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
 
 <div class="hero-wrap">
-  
-  <nav class="nav">
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Navegación principal">
+
     <div class="logo">
       <img src="./assets/images/logo.png" alt="OIV Global Logo" class="logo-img">
     </div>
-    <ul class="nav-links">
+
+    <!-- Hamburger button (mobile only) -->
+    <button
+      class="nav-toggle"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <ul class="nav-links" id="nav-menu" role="list">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#oportunidades">Oportunidades</a></li>
       <li><a href="#sobre">Sobre OIV</a></li>
       <li><a href="#comunidad">Comunidad</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
+
   </nav>
 
-  <section class="hero">
-    
-    <div class="video-bg">
-      <video autoplay muted loop playsinline>
+  <!-- HERO SECTION -->
+  <section class="hero" aria-labelledby="hero-heading">
+
+    <!-- Video background with mp4 fallback and poster -->
+    <div class="video-bg" aria-hidden="true">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="./assets/images/hero_poster.png"
+      >
         <source src="./assets/video/background.webm" type="video/webm">
+        <source src="./assets/video/background.mp4"  type="video/mp4">
       </video>
     </div>
 
-    <div class="gradient-overlay"></div>
-    <div class="gradient-bottom"></div>
+    <div class="gradient-overlay" aria-hidden="true"></div>
+    <div class="gradient-bottom"  aria-hidden="true"></div>
 
+    <!-- Left: Text content -->
     <div class="hero-content">
-      <div class="badge">
+
+      <div class="badge" aria-label="Categoría: Voluntariado Internacional">
         <div class="badge-dot"></div>
         Voluntariado Internacional
       </div>
 
-      <h1>Tu voluntariado,<br><span>tu impacto global</span></h1>
+      <h1 id="hero-heading">
+        Tu voluntariado,<br>
+        <span>tu impacto global</span>
+      </h1>
 
-      <p class="hero-desc">Conectamos personas apasionadas con oportunidades de voluntariado en todo el mundo. Construye comunidad, genera cambio real y deja tu huella.</p>
+      <p class="hero-desc">
+        Conectamos personas apasionadas con oportunidades de voluntariado en
+        todo el mundo. Construye comunidad, genera cambio real y deja tu huella.
+      </p>
 
+      <!-- CTAs with Font Awesome icons -->
       <div class="hero-ctas">
-        <a href="#oportunidades" class="btn-primary">Explorar oportunidades →</a>
-        <a href="#mas-info" class="btn-secondary">Conocer más</a>
+        <a
+          href="#oportunidades"
+          class="btn-primary"
+          aria-label="Explorar oportunidades de voluntariado"
+        >
+          Explorar oportunidades
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a
+          href="#mas-info"
+          class="btn-secondary"
+          aria-label="Conocer más sobre OIV"
+        >
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          Conocer más
+        </a>
       </div>
 
-      <div class="hero-stats">
+      <!-- Statistics -->
+      <div class="hero-stats" aria-label="Estadísticas de impacto">
         <div class="stat">
-          <i class="fa-solid fa-users stat-icon"></i>
+          <i class="fa-solid fa-users stat-icon" aria-hidden="true"></i>
           <div class="stat-info">
-            <div class="stat-num">12K+</div>
+            <div class="stat-num" aria-label="12 mil voluntarios">12K+</div>
             <div class="stat-label">Voluntarios</div>
           </div>
         </div>
         <div class="stat">
-          <i class="fa-solid fa-earth-americas stat-icon"></i>
+          <i class="fa-solid fa-earth-americas stat-icon" aria-hidden="true"></i>
           <div class="stat-info">
-            <div class="stat-num">80+</div>
+            <div class="stat-num" aria-label="Más de 80 países">80+</div>
             <div class="stat-label">Países</div>
           </div>
         </div>
         <div class="stat">
-          <i class="fa-solid fa-hand-holding-heart stat-icon"></i>
+          <i class="fa-solid fa-hand-holding-heart stat-icon" aria-hidden="true"></i>
           <div class="stat-info">
-            <div class="stat-num">500+</div>
+            <div class="stat-num" aria-label="Más de 500 proyectos">500+</div>
             <div class="stat-label">Proyectos</div>
           </div>
         </div>
       </div>
-    </div>
 
+    </div><!-- /.hero-content -->
+
+    <!-- Right: Feature card -->
     <div class="hero-visual">
-      <div class="hero-card">
+      <article class="hero-card" aria-label="Programa destacado">
         <div class="card-img">
-          <img src="./assets/images/hero_card.png" alt="Voluntarios en acción">
+          <img
+            src="./assets/images/hero_card.png"
+            alt="Voluntarios trabajando en proyectos comunitarios"
+            loading="lazy"
+          >
         </div>
         <div class="card-tag">Destacado</div>
         <h2 class="card-title">Programa de Desarrollo Comunitario 2026</h2>
         <div class="card-meta">
           <span>OIV Global</span>
-          <div class="card-dot"></div>
+          <div class="card-dot" aria-hidden="true"></div>
           <span>80+ países</span>
         </div>
-      </div>
-    </div>
-  </section>
+      </article>
+    </div><!-- /.hero-visual -->
 
-</div>
+  </section><!-- /.hero -->
+
+</div><!-- /.hero-wrap -->
+
+<!-- ===== HAMBURGER SCRIPT ===== -->
+<script>
+  (function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', function () {
+      const isOpen = menu.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'
+      );
+    });
+
+    /* Close menu when a link is clicked */
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menu.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menú de navegación');
+      });
+    });
+
+    /* Close menu on Escape key */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('nav-open')) {
+        menu.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menú de navegación');
+        toggle.focus();
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>

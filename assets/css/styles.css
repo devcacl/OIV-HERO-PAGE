@@ -1,9 +1,11 @@
 
-/* 
-   STYLES.CSS - OIV Hero Section 
-   
-   1. RESET & BASE */
-* {
+/* STYLES.CSS — OIV Hero Section
+   Organización Internacional de Voluntarios*/
+
+/* 1. RESET & BASE*/
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,6 +14,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -21,7 +24,8 @@ body {
   line-height: 1.6;
 }
 
-img, video {
+img,
+video {
   display: block;
   max-width: 100%;
   height: auto;
@@ -37,18 +41,28 @@ a:hover {
   color: #0F6E56;
 }
 
-/*2. VARIABLES & COLORS*/
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #a8d85a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
+/* 2. VARIABLES & COLORS */
 
 :root {
-  --color-primary: #185FA5;
-  --color-accent: #639922;
-  --color-hover: #0F6E56;
-  --color-text: #1a1a1a;
+  --color-primary:    #185FA5;
+  --color-accent:     #639922;
+  --color-accent-lt:  #a8d85a;   /* lighter accent used for highlights */
+  --color-hover:      #0F6E56;
+  --color-text:       #1a1a1a;
   --color-text-light: #666666;
-  --color-white: #ffffff;
+  --color-white:      #ffffff;
   --spacing-lg: 60px;
   --spacing-md: 40px;
   --spacing-sm: 24px;
+  --nav-height: 62px;          /* used to offset mobile menu */
 }
 
 /* 3. ANIMATIONS */
@@ -77,8 +91,9 @@ a:hover {
 
 @keyframes fadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
+
 
 /* 4. NAVIGATION */
 
@@ -86,11 +101,12 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 40px;
+  padding: 14px 40px;
   background: rgb(0, 0, 0);
   backdrop-filter: blur(8px);
   position: relative;
-  z-index: 10;
+  z-index: 100;           /* above video & hero content */
+  min-height: var(--nav-height);
 }
 
 .logo {
@@ -120,11 +136,53 @@ a:hover {
   color: var(--color-white);
 }
 
-/* 5. HERO SECTION */
 
+/* 5. HAMBURGER MENU */
+
+/* Button hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animate to X when open */
+.nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* 6. HERO SECTION */
 .hero-wrap {
   background: #0a0a0a;
-  border-radius: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -140,7 +198,7 @@ a:hover {
   overflow: hidden;
 }
 
-/* Video Background */
+/* Video background */
 .video-bg {
   position: absolute;
   inset: 0;
@@ -163,10 +221,10 @@ a:hover {
   z-index: 1;
   background: linear-gradient(
     105deg,
-    rgba(24, 95, 165, 0.88) 0%,
+    rgba(24, 95, 165, 0.88)  0%,
     rgba(15, 110, 86, 0.62) 45%,
     rgba(99, 153, 34, 0.18) 75%,
-    transparent 100%
+    transparent             100%
   );
 }
 
@@ -180,7 +238,8 @@ a:hover {
   background: linear-gradient(to top, rgba(10, 10, 10, 0.7), transparent);
 }
 
-/* 6. HERO CONTENT */
+
+/*  7. HERO CONTENT  */
 
 .hero-content {
   position: relative;
@@ -210,6 +269,7 @@ a:hover {
   height: 6px;
   border-radius: 50%;
   background: var(--color-accent);
+  flex-shrink: 0;
 }
 
 .hero h1 {
@@ -223,7 +283,7 @@ a:hover {
 }
 
 .hero h1 span {
-  color: #a8d85a;
+  color: var(--color-accent-lt);
 }
 
 .hero-desc {
@@ -235,7 +295,8 @@ a:hover {
   animation: fadeInUp 0.7s ease-out 0.2s both;
 }
 
-/* 7. BUTTONS */
+
+/* 8. BUTTONS */
 
 .hero-ctas {
   display: flex;
@@ -256,7 +317,7 @@ a:hover {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
   text-decoration: none;
 }
 
@@ -264,14 +325,14 @@ a:hover {
   background: var(--color-hover);
   color: var(--color-white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(24, 95, 165, 0.2);
+  box-shadow: 0 4px 16px rgba(24, 95, 165, 0.35);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.10);
   color: var(--color-white);
   font-size: 14px;
   font-weight: 500;
@@ -279,18 +340,20 @@ a:hover {
   border-radius: 8px;
   border: 0.5px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
   text-decoration: none;
 }
 
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.15);
-  color: #a8d85a;
-  border-color: #a8d85a;
+  color: var(--color-accent-lt);
+  border-color: var(--color-accent-lt);
   transform: translateY(-2px);
 }
 
-/* 8. STATISTICS */
+
+/* 9. STATISTICS*/
+
 .hero-stats {
   display: flex;
   gap: 36px;
@@ -308,7 +371,7 @@ a:hover {
 
 .stat-icon {
   font-size: 22px;
-  color: #a8d85a;
+  color: var(--color-accent-lt);
 }
 
 .stat-info {
@@ -319,7 +382,7 @@ a:hover {
 .stat-num {
   font-size: 22px;
   font-weight: 700;
-  color: #a8d85a;
+  color: var(--color-accent-lt);
   line-height: 1;
   margin-bottom: 4px;
 }
@@ -331,7 +394,9 @@ a:hover {
   letter-spacing: 0.8px;
 }
 
-/* 9. HERO VISUAL */
+
+/* 10. HERO VISUAL (card)*/
+
 .hero-visual {
   position: relative;
   z-index: 5;
@@ -343,38 +408,36 @@ a:hover {
 }
 
 .hero-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);  /* Safari */
   border: 0.5px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 24px;
   max-width: 300px;
   width: 100%;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición con un ligero rebote profesional */
-  cursor: pointer;
-}
-
-.hero-card:hover {
-  transform: translateY(-10px) scale(1.02); 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); 
-  border: 0.5px solid rgba(168, 216, 90, 0.5); 
 }
 
 .card-img {
   width: 100%;
   height: 160px;
   border-radius: 10px;
-  object-fit: cover;
   margin-bottom: 16px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card-tag {
   display: inline-block;
   background: rgba(99, 153, 34, 0.3);
   border: 0.5px solid rgba(99, 153, 34, 0.5);
-  color: #a8d85a;
+  color: var(--color-accent-lt);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -405,36 +468,79 @@ a:hover {
   height: 4px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
 }
 
-/* 10. RESPONSIVE */
 
-/* MOBILE */
+/*  11. RESPONSIVE — MOBILE (max 767px)  */
+
 @media (max-width: 767px) {
+
+  /* Nav */
   .nav {
     padding: 12px 20px;
+    flex-wrap: wrap;
   }
 
   .logo-img {
-    height: 28px; 
+    height: 28px;
   }
 
+  /* Show hamburger button */
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Hide desktop nav links by default */
   .nav-links {
-    gap: 12px;
-    font-size: 11px;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.95);
+    border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    /* Allows the nav to expand below logo row */
+    order: 3;
   }
 
+  /* Show when toggled */
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-accent-lt);
+  }
+
+  /* Hero grid to single column */
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
   }
 
   .hero-content {
-    padding: 24px;
+    padding: 28px 20px 20px;
   }
 
   .hero h1 {
-    font-size: 24px;
+    font-size: 26px;
+    letter-spacing: -0.4px;
   }
 
   .hero-desc {
@@ -444,6 +550,7 @@ a:hover {
 
   .hero-ctas {
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn-primary,
@@ -478,7 +585,7 @@ a:hover {
   }
 
   .hero-visual {
-    padding: 24px;
+    padding: 20px;
   }
 
   .hero-card {
@@ -486,8 +593,11 @@ a:hover {
   }
 }
 
-/* TABLET */
+
+/* 12. RESPONSIVE — TABLET (768px – 1023px) */
+
 @media (min-width: 768px) and (max-width: 1023px) {
+
   .nav {
     padding: 14px 30px;
   }
@@ -523,8 +633,11 @@ a:hover {
   }
 }
 
-/* DESKTOP */
+
+/*13. RESPONSIVE — DESKTOP (1024px+)*/
+
 @media (min-width: 1024px) {
+
   .nav {
     padding: 18px 40px;
   }
